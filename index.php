@@ -1,15 +1,9 @@
 <?php
-echo 'this is email validator' . '<br>';
+echo 'hello, this is email validator' . '<br>';
 
 $username="root";
 $password="";
 $database="test";
-
-/* if(mysql_connect('localhost',$username,$password)) {
-	echo "connected to mysql";
-} else {
-	echo "cannot connect to mysql";
-} */
 
 @mysql_connect('localhost',$username,$password) or die("cannot connect to mysql");
 
