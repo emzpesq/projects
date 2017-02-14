@@ -1,28 +1,44 @@
-<?php
-echo 'hello, this is email validator' . '<br>';
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="theme.css">
 
-$username="root";
-$password="";
-$database="test";
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+	<?php
+	echo 'hello, this is email validator' . '<br>';
 
-@mysql_connect('localhost',$username,$password) or die("cannot connect to mysql");
+	$username="root";
+	$password="";
+	$database="test";
 
-@mysql_select_db($database) or die( "Unable to select database");
+	@mysql_connect('localhost',$username,$password) or die("cannot connect to mysql");
 
-$query = "Select * from emails";
-$result = mysql_query($query);
+	@mysql_select_db($database) or die( "Unable to select database");
 
-$emails = array();
-while ($email =  mysql_fetch_assoc($result))
-{
-	$emails[] = $email['email'];
-}
-foreach ($emails as $email)
-{
-	if (filter_var($email, FILTER_VALIDATE_EMAIL) == FALSE) {
-		echo $email . '<br>';
+	$query = "Select * from emails";
+	$result = mysql_query($query);
+
+	$emails = array();
+	while ($email =  mysql_fetch_assoc($result))
+	{
+		$emails[] = $email['email'];
 	}
-}
-		
-mysql_close();
-?>
+	foreach ($emails as $email)
+	{
+		if (filter_var($email, FILTER_VALIDATE_EMAIL) == FALSE) {
+			echo $email . '<br>';
+		}
+	}
+			
+	mysql_close();
+	echo "end of list";
+	?>
+</body>
+</html>
