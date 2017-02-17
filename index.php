@@ -36,7 +36,8 @@
 			echo $email . '<br>';
 		}
 	}
-			
+	print_r(array_count_values($emails));
+	
 	mysql_close();
 	echo "end of list";
 	?>
